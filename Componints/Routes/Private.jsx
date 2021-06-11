@@ -1,0 +1,8 @@
+function Private () {
+
+  return (
+    <>
+      Privete
+    </>
+  )
+}
