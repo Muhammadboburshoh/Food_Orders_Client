@@ -9,7 +9,7 @@ function Main () {
   const { loading, error, data } = useGet('/categories')
 
 
-  const [ categoryId, setCategoryId ] = useCatigory()
+  const [ , setCategoryId ] = useCatigory()
 
 
   return (

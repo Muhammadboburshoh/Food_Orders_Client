@@ -31,7 +31,7 @@ function useGet (path) {
   }, [path])
 
 
-  return{
+  return {
     data,
     loading,
     error
