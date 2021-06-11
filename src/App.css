@@ -29,7 +29,8 @@ img {
 
 .container {
   max-width: 1000px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-right: auto;
   margin-left: auto;
-
 }
