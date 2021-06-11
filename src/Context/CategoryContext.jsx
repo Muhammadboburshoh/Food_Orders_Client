@@ -7,7 +7,7 @@ const Provider = ({children}) => {
   const [ categoryId, setCategoryId ] = useState(1)
 
   return (
-    <CatigoryContext.Provider value={categoryId, setCategoryId}>
+    <CatigoryContext.Provider value={{categoryId, setCategoryId}}>
       {children}
     </CatigoryContext.Provider>
   )

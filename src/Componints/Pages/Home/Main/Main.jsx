@@ -1,24 +1,16 @@
-import { useEffect, useState } from "react"
+import { useCatigory } from "../../../../Context/CategoryContext"
 
 import "./Main.css"
 import useGet from "../../../../Hooks/useGet"
+import Products from "./Products/Products"
 
 function Main () {
 
   const { loading, error, data } = useGet('/categories')
 
 
+  const [ categoryId, setCategoryId ] = useCatigory()
 
-
-  const [ categoryId, setCategoryId ] = useState(1)
-
-  console.log(categoryId);
-
-  useEffect(() => {
-
-
-
-  }, [])
 
   return (
     <>
@@ -48,6 +40,8 @@ function Main () {
             )
           }
         </div>
+
+        <Products />
       </main>
     </>
   )
