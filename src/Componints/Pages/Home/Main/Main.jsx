@@ -10,9 +10,9 @@ function Main () {
 
 
 
-  const [ category, setCategory ] = useState(1)
+  const [ categoryId, setCategoryId ] = useState(1)
 
-  console.log(category);
+  console.log(categoryId);
 
   useEffect(() => {
 
@@ -37,7 +37,7 @@ function Main () {
                 {
                   data.map(c => (
                     <button
-                      onClick={() => setCategory(c.category_id)}
+                      onClick={() => setCategoryId(c.category_id)}
                       key={Math.random()}
                       className="categorie"
                     >{c.category_name}</button>
