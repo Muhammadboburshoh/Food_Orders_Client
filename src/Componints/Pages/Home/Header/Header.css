@@ -1,0 +1,44 @@
+.header {
+  background-color: #FFBB0C;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.header__container {
+  max-width: 1150px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__menu {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+}
+
+.header__link {
+  display: inline-block;
+  padding: 11px;
+  border-radius: 5px;
+  text-decoration: none;
+  min-width: 180px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+.basket-link{
+  color: #000;
+  background-color: #fff;
+}
+
+.signup-link {
+  margin-left: 20px;
+  background-color: #2F3237;
+  color: #fff;
+
+}
