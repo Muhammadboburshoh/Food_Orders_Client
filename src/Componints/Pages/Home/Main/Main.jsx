@@ -1,9 +1,24 @@
+import { useEffect, useState } from "react"
+
 import "./Main.css"
 import useGet from "../../../../Hooks/useGet"
 
 function Main () {
 
   const { loading, error, data } = useGet('/categories')
+
+
+
+
+  const [ category, setCategory ] = useState(1)
+
+  console.log(category);
+
+  useEffect(() => {
+
+
+
+  }, [])
 
   return (
     <>
@@ -22,6 +37,7 @@ function Main () {
                 {
                   data.map(c => (
                     <button
+                      onClick={() => setCategory(c.category_id)}
                       key={Math.random()}
                       className="categorie"
                     >{c.category_name}</button>
