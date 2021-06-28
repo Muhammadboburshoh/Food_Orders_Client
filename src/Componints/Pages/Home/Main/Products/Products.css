@@ -71,7 +71,15 @@
   cursor: pointer;
 }
 
-.products__orders {
+.products_btns {
+  margin-bottom: 10px;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+}
+
+.products__orders, .products__orders-table {
   border: none;
   background: none;
   background-color: #E62828;
@@ -84,9 +92,10 @@
   text-align: center;
   font-size: 15px;
   cursor: pointer;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 50px;
-  margin-bottom: 60px;
+  margin: 50px;
+}
+
+.products__orders-table {
+  outline: none;
+  background-color: #808080;
 }

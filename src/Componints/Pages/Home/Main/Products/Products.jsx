@@ -8,6 +8,8 @@ function Products () {
 
   const {data, error, loading} = useGet(`/products/${categoryId}`)
 
+  const { data: tables, error: tableErr, loading: tableLoading } = useGet(`/tables`)
+
   return(
     <>
       <section className="products">
@@ -24,7 +26,6 @@ function Products () {
                 {
                   data.map(p => (
                     <li key={Math.random()} className="products__item">
-                      {console.log(p)}
                       <img
                         /*src={"http://localhost:4000/" + p.product_image}*/
                         className="products__img"
@@ -54,9 +55,27 @@ function Products () {
             )
           }
 
+          <div className="products_btns">
+            {
+              tableLoading && <h1>Loading...</h1>
+            }
+            {
+              tableErr && <h1>{String(tableErr.message)}</h1>
+            }
+            {
+              !tableErr && !tableLoading && tables && (
+                <select className="products__orders-table">
+                  {
+                    tables.map(t => <option  key={Math.random()} value={t.table_number}>{t.table_number}-Stol</option>)
+                  }
+                </select>
+              )
+            }
+
           <button
             className="products__orders"
           >Buyurtma berish</button>
+          </div>
         </div>
       </section>
     </>
