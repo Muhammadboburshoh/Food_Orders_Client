@@ -63,20 +63,21 @@
   background: none;
   background-color: #E62828;
   border-radius: 8px;
+  padding: 10px;
   /* padding: 5px; */
   color: #fff;
-  width: 120px;
+  /* width: 120px; */
   font-weight: bold;
-  font-size: 30px;
+  font-size: 15px;
   cursor: pointer;
 }
 
 .products_btns {
-  margin-bottom: 10px;
   display: flex;
   margin-right: auto;
   margin-left: auto;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
 .products__orders, .products__orders-table {
@@ -104,3 +105,27 @@
   margin-left: auto;
 }
 
+.carusel-btn {
+  outline: none;
+  border: 2px solid #808080;
+  background: none;
+  padding: 20px 30px;
+  border-radius: 8px;
+  background-position: center center;
+  background-size: 25px;
+  background-repeat: no-repeat;
+}
+
+.left-btn {
+  background-image: url("../../../../../Images//left-btn.png");
+  margin-right: 30px;
+}
+
+.carusel-btn:hover {
+  background-color: #ECECEC;
+}
+
+.right-btn {
+  background-image: url("../../../../../Images//left-btn.png");
+  transform: scaleX(-1);
+}

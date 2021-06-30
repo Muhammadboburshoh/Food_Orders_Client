@@ -2,6 +2,9 @@ import "./Products.css"
 import { useCatigory } from "../../../../../Context/CategoryContext"
 import useGet from "../../../../../Hooks/useGet";
 
+/* import leftBtn from "../../../../../Images/left-btn"
+import right from "../../../../../Images/right-btn" */
+
 function Products () {
 
   const [ categoryId ] = useCatigory()
@@ -63,7 +66,7 @@ function Products () {
                       </div>
                       <button
                         className="products__order-btn"
-                      >+</button>
+                      >Savatchaga qo'shish</button>
                     </li>
                   ))
                 }
@@ -72,10 +75,14 @@ function Products () {
           }
 
           <div className="products_btns">
+            <button className="carusel-btn left-btn"></button>
+            <button className="carusel-btn right-btn"></button>
+          </div>
+          {/* <div className="products_btns">
           <button
             className="products__orders"
           >Buyurtma berish</button>
-          </div>
+          </div> */}
         </div>
       </section>
     </>
