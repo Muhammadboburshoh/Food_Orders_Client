@@ -12,12 +12,13 @@ function Products () {
 
   const { data: tables, error: tableErr, loading: tableLoading } = useGet(`/tables`)
 
-  const [ tableNum, setTableNum ] = useState(null)
+  const [ tableNum, setTableNum ] = useState(window.localStorage.getItem("tableNumber") || null)
+  
   useEffect(() => {
 
+    window.localStorage.setItem("tableNumber", tableNum)
 
-
-  }, [])
+  }, [tableNum])
 
   return(
     <>
@@ -33,9 +34,9 @@ function Products () {
               !tableErr && !tableLoading && tables && (
                 <select
                   className="products__orders-table"
-                  onChange={(e) => console.log(e.target.value)}
+                  onChange={(e) => setTableNum(e.target.value)}
                 >
-                  <option value="">O'tirgan stol raqamini tanlang:</option>
+                  <option>O'tirgan stol raqamini tanlang:</option>
                   {
                     tables.map(t => <option value={t.table_id} key={Math.random()} >{t.table_number}-STOL</option>)
                   }
