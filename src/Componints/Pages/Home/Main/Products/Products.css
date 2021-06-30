@@ -99,3 +99,8 @@
   outline: none;
   background-color: #808080;
 }
+
+.products__orders-table option {
+
+  text-align: center;
+}
