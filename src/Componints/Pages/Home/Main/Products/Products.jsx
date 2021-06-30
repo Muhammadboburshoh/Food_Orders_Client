@@ -1,9 +1,8 @@
+import { useEffect, useState } from "react";
+
 import "./Products.css"
 import { useCatigory } from "../../../../../Context/CategoryContext"
 import useGet from "../../../../../Hooks/useGet";
-
-/* import leftBtn from "../../../../../Images/left-btn"
-import right from "../../../../../Images/right-btn" */
 
 function Products () {
 
@@ -12,6 +11,13 @@ function Products () {
   const {data, error, loading} = useGet(`/products/${categoryId}`)
 
   const { data: tables, error: tableErr, loading: tableLoading } = useGet(`/tables`)
+
+  const [ tableNum, setTableNum ] = useState(null)
+  useEffect(() => {
+
+
+
+  }, [])
 
   return(
     <>
@@ -25,9 +31,13 @@ function Products () {
             }
             {
               !tableErr && !tableLoading && tables && (
-                <select className="products__orders-table">
+                <select
+                  className="products__orders-table"
+                  onChange={() => console.log("ab")}
+                >
+                  <option value="">O'tirgan stol raqamini tanlang:</option>
                   {
-                    tables.map(t => <option  key={Math.random()} value={t.id}>{t.table_number}-Stol</option>)
+                    tables.map(t => <option  key={Math.random()} value={t.id}>{t.table_number}-STOL</option>)
                   }
                 </select>
               )
