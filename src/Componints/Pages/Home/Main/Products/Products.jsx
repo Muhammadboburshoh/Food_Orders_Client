@@ -13,6 +13,22 @@ function Products () {
   return(
     <>
       <section className="products">
+
+            {
+              tableLoading && <h1>Loading...</h1>
+            }
+            {
+              tableErr && <h1>{String(tableErr.message)}</h1>
+            }
+            {
+              !tableErr && !tableLoading && tables && (
+                <select className="products__orders-table">
+                  {
+                    tables.map(t => <option  key={Math.random()} value={t.id}>{t.table_number}-Stol</option>)
+                  }
+                </select>
+              )
+            }
         <div className="container">
           {
             loading && <h1>Loading...</h1>
@@ -56,22 +72,6 @@ function Products () {
           }
 
           <div className="products_btns">
-            {
-              tableLoading && <h1>Loading...</h1>
-            }
-            {
-              tableErr && <h1>{String(tableErr.message)}</h1>
-            }
-            {
-              !tableErr && !tableLoading && tables && (
-                <select className="products__orders-table">
-                  {
-                    tables.map(t => <option  key={Math.random()} value={t.table_number}>{t.table_number}-Stol</option>)
-                  }
-                </select>
-              )
-            }
-
           <button
             className="products__orders"
           >Buyurtma berish</button>
