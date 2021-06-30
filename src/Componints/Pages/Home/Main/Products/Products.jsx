@@ -33,11 +33,11 @@ function Products () {
               !tableErr && !tableLoading && tables && (
                 <select
                   className="products__orders-table"
-                  onChange={() => console.log("ab")}
+                  onChange={(e) => console.log(e.target.value)}
                 >
                   <option value="">O'tirgan stol raqamini tanlang:</option>
                   {
-                    tables.map(t => <option  key={Math.random()} value={t.id}>{t.table_number}-STOL</option>)
+                    tables.map(t => <option value={t.table_id} key={Math.random()} >{t.table_number}-STOL</option>)
                   }
                 </select>
               )

@@ -114,10 +114,11 @@
   background-position: center center;
   background-size: 25px;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .left-btn {
-  background-image: url("../../../../../Images//left-btn.png");
+  background-image: url("../../../../../Images/left-btn.png");
   margin-right: 30px;
 }
 
@@ -126,6 +127,6 @@
 }
 
 .right-btn {
-  background-image: url("../../../../../Images//left-btn.png");
+  background-image: url("../../../../../Images/left-btn.png");
   transform: scaleX(-1);
 }
