@@ -5,13 +5,16 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import { Provider } from "./Context/CategoryContext"
 import { Provider as BasketProvider } from "./Context/BasketContext"
+import { Provider as TableProvider } from "./Context/TableContext"
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider>
         <BasketProvider>
-          <App />
+          <TableProvider>
+            <App />
+          </TableProvider>
         </BasketProvider>
       </Provider>
     </BrowserRouter>

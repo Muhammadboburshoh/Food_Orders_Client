@@ -1,21 +1,15 @@
-import { useEffect } from "react"
-
 import "./Basket.css"
 import basketImg from ".././../../Images/basket.png"
 import { useBasket } from "../../../Context/BasketContext"
 import useGet from "../../../Hooks/useGet"
+import { useTable } from "../../../Context/TableContext"
 
 function Basket() {
-  let tableId = window.localStorage.getItem("tableId")
 
-  
-  useEffect(() => {
-    // tableId = window.localStorage.getItem("tableId")
-    // window.location.reload("/")
-    console.log("ab");
-  }, [tableId])
+  const [ tableId ] = useTable()
   
   var { data, loading, error } = useGet(`/order/new/${tableId}`)
+  console.log(tableId, data);
 
   const [ basketDisplay, setBasketDisplay ] = useBasket()
   return (
@@ -44,7 +38,7 @@ function Basket() {
                 
                 <table>
                   {
-                    console.log(data)
+                    // console.log(data)
                   }
                   <thead>
                   <tr>

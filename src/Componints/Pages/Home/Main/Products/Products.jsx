@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./Products.css"
 import { useCatigory } from "../../../../../Context/CategoryContext"
 import useGet from "../../../../../Hooks/useGet";
+import { useTable } from "../../../../../Context/TableContext";
 
 function Products () {
 
@@ -12,9 +13,7 @@ function Products () {
 
   const { data: tables, error: tableErr, loading: tableLoading } = useGet(`/tables`)
 
-  let TABLEID = window.localStorage.getItem("tableId") || null
-
-  const [ tableId, setTableId ] = useState(TABLEID|| null)
+  const [ tableId, setTableId ] = useTable()
   
   useEffect(() => {
 
