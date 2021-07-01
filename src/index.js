@@ -4,12 +4,15 @@ import { BrowserRouter } from 'react-router-dom'
 
 import App from './App.jsx'
 import { Provider } from "./Context/CategoryContext"
+import { Provider as BasketProvider } from "./Context/BasketContext"
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider>
-        <App />
+        <BasketProvider>
+          <App />
+        </BasketProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,

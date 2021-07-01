@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom"
 
+import Basket from "../../BasketPage/Basket"
 import "./Header.css"
+import { useBasket } from "../../../../Context/BasketContext"
 
 import Logo from "../../../../Images/Logo.png"
 
 function Header () {
+  const [ basketDisplay, setBasketDisplay ] = useBasket()
+  
   return (
     <>
       <header className="header">
@@ -15,10 +19,19 @@ function Header () {
 
           <ul className="header__menu">
             <li className="header__item">
-              <Link className="header__link basket-link" to="#">Savatcha</Link>
+              <Link
+                 onClick={() => {
+                  if(basketDisplay) {
+                    setBasketDisplay(null)
+                  }
+                }}
+                className="header__link basket-link" to="#">Savatcha</Link
+                >
             </li>
           </ul>
         </div>
+
+        <Basket />
       </header>
     </>
   )

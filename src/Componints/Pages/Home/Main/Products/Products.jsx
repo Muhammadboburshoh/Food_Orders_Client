@@ -12,18 +12,29 @@ function Products () {
 
   const { data: tables, error: tableErr, loading: tableLoading } = useGet(`/tables`)
 
-  const [ tableNum, setTableNum ] = useState(window.localStorage.getItem("tableNumber") || null)
+  let TABLEID = window.localStorage.getItem("tableId") || null
+
+  const [ tableId, setTableId ] = useState(TABLEID|| null)
   
   useEffect(() => {
 
-    window.localStorage.setItem("tableNumber", tableNum)
+    window.localStorage.setItem("tableId", tableId)
 
-  }, [tableNum])
+  }, [tableId])
 
+  const tableChange = e => {
+    setTableId(e.target.value)
+  }
+
+  let tableNum
+  if(tableId && tables) {
+    tableNum = tables.find(t => t.table_id == tableId)
+  }
   return(
     <>
       <section className="products">
-
+      <div className="container">
+        <div className="table__wrapper">
             {
               tableLoading && <h1>Loading...</h1>
             }
@@ -33,17 +44,30 @@ function Products () {
             {
               !tableErr && !tableLoading && tables && (
                 <select
+                  onChange={tableChange}
+                  defaultValue={tableId}
                   className="products__orders-table"
-                  onChange={(e) => setTableNum(e.target.value)}
                 >
-                  <option>O'tirgan stol raqamini tanlang:</option>
+                  <option value="">O'tirgan stol raqamini tanlang:</option>
                   {
-                    tables.map(t => <option value={t.table_id} key={Math.random()} >{t.table_number}-STOL</option>)
+                    tables.map(t => (
+                      <option
+                        value={t.table_id}
+                        key={Math.random()}
+                      >
+                        {t.table_number}-STOL
+                      </option>
+                    ))
                   }
                 </select>
               )
             }
-        <div className="container">
+
+            {
+              tableNum && <span className="table_number">Siz {tableNum.table_number}-stolni tanladingiz!</span>
+            }
+        </div>
+        
           {
             loading && <h1>Loading...</h1>
           }

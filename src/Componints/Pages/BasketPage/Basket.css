@@ -1,0 +1,54 @@
+.backet {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  z-index: 2;
+  background-color: #eeeeee;
+  padding: 20px;
+  box-shadow: -23px 9px 41px -23px rgb(0 0 0 / 75%);
+  width: 350px;
+}
+
+.basket__header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 2px solid#E62828;
+}
+
+.basket__heading {
+  margin-left: 20px;
+}
+
+
+.basket__main {
+  display: flex;
+  /* background-color: #123; */
+  width: 100%;
+  /* min-height: 100px; */
+  overflow: hidden;
+  overflow-y: auto;
+  margin-bottom: 20px;;
+}
+
+.basket__btn {
+  border: none;
+  background: none;
+  background-color: #E62828;
+  border-radius: 8px;
+  padding: 10px;
+  color: #fff;
+  display: flex;;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+}
+
+.d-none {
+  position: absolute;
+  left: -100%;
+}

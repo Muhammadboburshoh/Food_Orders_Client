@@ -1,5 +1,5 @@
 .products {
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 
 .products__list {
@@ -72,6 +72,10 @@
   cursor: pointer;
 }
 
+.table__wrapper {
+  display: flex;
+}
+
 .products_btns {
   display: flex;
   margin-right: auto;
@@ -87,22 +91,42 @@
   border-radius: 8px;
   padding: 15px;
   color: #fff;
-  /* width: 200px; */
   font-weight: bold;
-  /* text-transform: uppercase; */
   text-align: center;
   font-size: 15px;
   cursor: pointer;
-  margin: 50px;
-}
-
-.products__orders-table {
   outline: none;
   background-color: #808080;
-  display: flex;
+  margin-right: 50px;
+}
+
+.close_button {
+  position: absolute;
+  right: 5%;
+  outline: none;
+  background: none;
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-size: cover;
+  background-image: url("../../../../../Images/close-button.png");
+}
+
+.table__wrapper {
   margin: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   margin-right: auto;
   margin-left: auto;
+}
+
+.table_number {
+  background-color: #ECECEC;
+  padding: 8px;
+  border-radius: 5px;
 }
 
 .carusel-btn {
