@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import "./Products.css"
 import { useCatigory } from "../../../../../Context/CategoryContext"

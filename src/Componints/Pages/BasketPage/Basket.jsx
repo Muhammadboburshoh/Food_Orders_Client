@@ -8,7 +8,7 @@ function Basket() {
 
   const [ tableId ] = useTable()
   
-  var { data, loading, error } = useGet(`/order/new/${tableId}`)
+  var { data, loading } = useGet(`/order/new/${tableId}`)
   if(data) {
 
     console.log(tableId, data[0]);
@@ -50,10 +50,10 @@ function Basket() {
                     <th>Narxi</th>
                   </tr>
                   </thead>
-                  {console.log(data[0])}
+                  {console.log(data)}
                   <tbody>
                       { 
-                        data[0].product.map(( p, i ) => (
+                        data.product.map(( p, i ) => (
                           <tr key={Math.random()}>
                             <td key={Math.random()}>{p}</td>
                             <td key={Math.random()}>{data.count[i]}</td>
