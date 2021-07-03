@@ -1,19 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import "./Products.css"
 import { useCatigory } from "../../../../../Context/CategoryContext"
 import useGet from "../../../../../Hooks/useGet";
+import usePost from "../../../../../Hooks/usePost"
 import { useTable } from "../../../../../Context/TableContext";
 
 function Products () {
 
+  const { data: orderData, loading: orderLoading, error: orderError, post: orderPost } = usePost("/order")
+
   const [ categoryId ] = useCatigory()
 
   const {data, error, loading} = useGet(`/products/${categoryId}`)
+  // console.log(orderData);
 
   const { data: tables, error: tableErr, loading: tableLoading } = useGet(`/tables`)
 
   const [ tableId, setTableId ] = useTable()
+  
+  let productCount = 1
   
   useEffect(() => {
 
@@ -81,8 +87,8 @@ function Products () {
                     <li key={Math.random()} className="products__item">
                       <img
                         /*src={"http://localhost:4000/" + p.product_image}*/
-                        className="products__img"
                         src="https://picsum.photos/id/156/250/250"
+                        className="products__img"
                         alt={p.product_name}
                         width="250"
                         height="250"
@@ -92,13 +98,24 @@ function Products () {
                       <div className="products__count-box">
                         <label className="products__label" htmlFor="count">Nechta:</label>
                         <input
-                        defaultValue={1}
-                          id="count"
+                          onChange={e =>{
+                            productCount = e.target.value.trim();
+                          }}
+                          defaultValue={1}
+                          name={'name' + Math.random()}
+                          id={'name' + Math.random()}
                           className="products__count"
                           type="number"
                         />
                       </div>
                       <button
+                        onClick={ () => {
+                          orderPost({
+                            productId: p.product_id,
+                            itemCount: productCount,
+                            tableId: tableId
+                          })
+                        }}
                         className="products__order-btn"
                       >Savatchaga qo'shish</button>
                     </li>
