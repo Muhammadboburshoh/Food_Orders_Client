@@ -3,9 +3,9 @@ import { useState, useEffect } from "react"
 import "./Basket.css"
 import basketImg from ".././../../Images/basket.png"
 import { useBasket } from "../../../Context/BasketContext"
-// import useGet from "../../../Hooks/useGet"
 import { useTable } from "../../../Context/TableContext"
-import useDelete from "../../../Hooks/useDelete"
+import { useOrder } from "../../../Context/getOrdersContext"
+
 
 function Basket() {
   const [ loading, setLoading ] = useState(false)
@@ -16,13 +16,11 @@ function Basket() {
   const [ delData, setDelData ] = useState(null)
   const [ delLoading, setDelLoading ] = useState(false)
 
+  const [ getOrder ] = useOrder()
+
   let price = 0
 
   const [ tableId ] = useTable()
-
-  // var { data, loading } = useGet(`/order/${tableId}`)
-
-  // const { data: delData, error: delError, loading: delLoading }= useDelete(`/order/${tableId}`)
 
   const [ itemId, setItemId ] = useState(0)
 
@@ -50,7 +48,9 @@ function Basket() {
 
     })()
 
-  }, [tableId, itemId])
+  }, [tableId, itemId, delError, delData, delLoading, getOrder])
+
+  // console.log(useOrder);
 
   useEffect(() => {
 
@@ -119,7 +119,10 @@ function Basket() {
                 loading && <h1>Loading...</h1>
               }
               {
-                !loading && data && (
+                error && <h1>{String}</h1>
+              }
+              {
+                !loading && data && !error && (
                   <>
                     <table>
                       <thead>

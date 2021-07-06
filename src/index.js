@@ -6,6 +6,7 @@ import App from './App.jsx'
 import { Provider } from "./Context/CategoryContext"
 import { Provider as BasketProvider } from "./Context/BasketContext"
 import { Provider as TableProvider } from "./Context/TableContext"
+import { Provider as GetOrdersContext } from "./Context/getOrdersContext"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.render(
       <Provider>
         <BasketProvider>
           <TableProvider>
-            <App />
+            <GetOrdersContext>
+              <App />
+            </GetOrdersContext>
           </TableProvider>
         </BasketProvider>
       </Provider>

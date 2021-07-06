@@ -4,11 +4,12 @@ import "./Products.css"
 import { useCatigory } from "../../../../../Context/CategoryContext"
 import useGet from "../../../../../Hooks/useGet";
 import usePost from "../../../../../Hooks/usePost"
-import { useTable } from "../../../../../Context/TableContext";
+import { useTable } from "../../../../../Context/TableContext"
+import { useOrder } from "../../../../../Context/getOrdersContext"
 
 function Products () {
 
-  // const [ ]
+  const [ getOrder, setGetOrder ] = useOrder()
 
   const [ page, setPage ] = useState(1)
   const [ categoryId ] = useCatigory()
@@ -55,6 +56,17 @@ function Products () {
   if(tableId && tables) {
     tableNum = tables.find(t => (t.table_id -0) === (tableId - 0))
   }
+
+  useEffect(() => {
+
+    if(getOrder === 1) {
+      setGetOrder(2)
+    } else {
+      setGetOrder(1)
+    }
+
+  }, [orderData])
+
   return(
     <>
       <section className="products">
