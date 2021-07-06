@@ -37,7 +37,6 @@ function Products () {
       if (NEWORDER) {
         NEWORDER.textContent = ""
         NEWORDER.classList.remove("newOrder")
-        // window.location.reload()
       }
 
     }, 1500)
@@ -112,7 +111,7 @@ function Products () {
                         height="250"
                       />
                       <h3 className="products__name">{p.product_name}</h3>
-                      <p className="products__price">{p.product_price} SO'M</p>
+                      <p className="products__price">{p.product_price - 0} SO'M</p>
                       <div className="products__count-box">
                         <label className="products__label" htmlFor="count">Nechta:</label>
                         <input
@@ -147,11 +146,6 @@ function Products () {
             <button className="carusel-btn left-btn"></button>
             <button className="carusel-btn right-btn"></button>
           </div>
-          {/* <div className="products_btns">
-          <button
-            className="products__orders"
-          >Buyurtma berish</button>
-          </div> */}
         </div>
 
 
