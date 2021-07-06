@@ -163,3 +163,20 @@ table, th, td {
   background-image: url("../../../../../Images/left-btn.png");
   transform: scaleX(-1);
 }
+
+.d-none {
+  display: none;
+}
+
+.newOrder {
+  display: block;
+  position: fixed;
+  top: 49%;
+  left: 45%;
+  background-color: #81B214;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}

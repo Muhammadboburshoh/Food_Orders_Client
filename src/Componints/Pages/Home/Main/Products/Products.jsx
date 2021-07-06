@@ -8,24 +8,42 @@ import { useTable } from "../../../../../Context/TableContext";
 
 function Products () {
 
-  const { data: orderData, loading: orderLoading, error: orderError, post: orderPost } = usePost("/order")
-
+  
   const [ categoryId ] = useCatigory()
-
+  // POST order
+  const { data: orderData, loading: orderLoading, error: orderError, post: orderPost } = usePost("/order")
+  // GET products
   const {data, error, loading} = useGet(`/products/${categoryId}`)
-  // console.log(orderData);
-
+  // GET table number
   const { data: tables, error: tableErr, loading: tableLoading } = useGet(`/tables`)
 
   const [ tableId, setTableId ] = useTable()
   
   let productCount = 1
+
   
+  let NEWORDER = document.getElementById("newElemen");
   useEffect(() => {
 
     window.localStorage.setItem("tableId", tableId)
 
-  }, [tableId])
+    if(orderData) {
+      NEWORDER.textContent = "New Order"
+      NEWORDER.classList.add("newOrder")
+    }
+
+    setTimeout(() => {
+
+      if (NEWORDER) {
+        NEWORDER.textContent = ""
+        NEWORDER.classList.remove("newOrder")
+        
+      }
+
+    }, 1500)
+
+
+  }, [tableId, orderData, orderLoading, orderError, NEWORDER])
 
   const tableChange = e => {
     setTableId(e.target.value)
@@ -112,7 +130,7 @@ function Products () {
                         onClick={ () => {
                           orderPost({
                             productId: p.product_id,
-                            itemCount: productCount,
+                            productCount: productCount,
                             tableId: tableId
                           })
                         }}
@@ -135,6 +153,10 @@ function Products () {
           >Buyurtma berish</button>
           </div> */}
         </div>
+
+
+          <div id="newElemen" className="d-none"></div>
+
       </section>
     </>
   )
