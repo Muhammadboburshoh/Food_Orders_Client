@@ -52,6 +52,7 @@ function Basket() {
                           <th>Nomi</th>
                           <th>Nechta</th>
                           <th>Narxi</th>
+                          <th>DEL</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -61,6 +62,10 @@ function Basket() {
                               <td>{d.product_name}</td>
                               <td>{d.product_count}</td>
                               <td>{(d.product_count - 0) * (d.product_price - 0)}</td>
+                              <td
+                                className="delete_btn"
+                                
+                              ></td>
                               <td className="d-none">{price += (d.product_count - 0) * (d.product_price - 0)}</td>
                             </tr>
                           ))

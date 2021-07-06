@@ -10,6 +10,7 @@ function Products () {
 
   const [ page, setPage ] = useState(1)
   const [ categoryId ] = useCatigory()
+  
   // POST order
   const { data: orderData, loading: orderLoading, error: orderError, post: orderPost } = usePost("/order")
   // GET products
