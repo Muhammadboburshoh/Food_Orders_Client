@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react"
 
-// import useAuth from "./useAuth"
 
 const serviseURL = 'http://localhost:3000'
 
 const usePost = (path) => {
 
-  // const { accessToken } = useAuth()
 
   const [ loading, setLoading ] = useState(false)
   const [ error, setError ] = useState(null)
@@ -22,21 +20,18 @@ const usePost = (path) => {
         
         try { 
           
-          // console.log(serviseURL + path);
           const response = await fetch(serviseURL + path, {
             method: 'POST',
             headers: {
               'Content-Type': "application/json",
-              // access_token: accessToken ? accessToken : ''
             },
             body: JSON.stringify(body)
           })
-          // console.log(body);
+
           if(response.status >= 200 && response.status <= 299) {
 
 						setLoading(false)
             setData(await response.json())
-            // console.log(await response.json(), "abdulloj");
             setBody(null)
           } else {
 

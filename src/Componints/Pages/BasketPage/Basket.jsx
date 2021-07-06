@@ -1,15 +1,90 @@
+import { useState, useEffect } from "react"
+
 import "./Basket.css"
 import basketImg from ".././../../Images/basket.png"
 import { useBasket } from "../../../Context/BasketContext"
-import useGet from "../../../Hooks/useGet"
+// import useGet from "../../../Hooks/useGet"
 import { useTable } from "../../../Context/TableContext"
+import useDelete from "../../../Hooks/useDelete"
 
 function Basket() {
+  const [ loading, setLoading ] = useState(false)
+  const [ data, setData ] = useState(null)
+  const [ error, setError ] = useState(null)
+
+  const [ delError, setDelError ] = useState(null)
+  const [ delData, setDelData ] = useState(null)
+  const [ delLoading, setDelLoading ] = useState(false)
+
   let price = 0
 
   const [ tableId ] = useTable()
+
+  // var { data, loading } = useGet(`/order/${tableId}`)
+
+  // const { data: delData, error: delError, loading: delLoading }= useDelete(`/order/${tableId}`)
+
+  const [ itemId, setItemId ] = useState(0)
+
+
+
+  useEffect(() => {
+
+    ;(async () => {
+
+      try {
+        setLoading(false)
+
+        const response = await fetch(`http://localhost:3000/order/${tableId}`)
+
+        const json = await response.json()
+        if(json) {
+          setLoading(false)
+          setData(json)
+        }
+
+      } catch(e) {
+        setLoading(false)
+        setError(e)
+      }
+
+    })()
+
+  }, [tableId, itemId])
+
+  useEffect(() => {
+
+    ;(async () => {
+
+      if(itemId > 0) {
+
+        try {
+          setDelLoading(false)
   
-  var { data, loading } = useGet(`/order/${tableId}`)
+          const response = await fetch(`http://localhost:3000/order/${itemId}`, {
+            method: "DELETE",
+            headers : {
+              "Content-Type": "application/json"
+            }
+          })
+  
+          const json = await response.json()
+          if(json) {
+            setDelLoading(false)
+            setDelData(json)
+            setItemId(0)
+          }
+  
+        } catch(e) {
+          setDelLoading(false)
+          setDelError(e)
+        }
+      } 
+
+
+    })()
+
+  }, [itemId])
 
 
   const [ basketDisplay, setBasketDisplay ] = useBasket()
@@ -64,7 +139,9 @@ function Basket() {
                               <td>{(d.product_count - 0) * (d.product_price - 0)}</td>
                               <td
                                 className="delete_btn"
-                                
+                                onClick={() =>{
+                                  setItemId(d.item_id)
+                                }}
                               ></td>
                               <td className="d-none">{price += (d.product_count - 0) * (d.product_price - 0)}</td>
                             </tr>
