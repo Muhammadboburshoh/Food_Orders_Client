@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import "./Products.css"
 import { useCatigory } from "../../../../../Context/CategoryContext"
@@ -8,17 +8,16 @@ import { useTable } from "../../../../../Context/TableContext";
 
 function Products () {
 
-  
+  const [ page, setPage ] = useState(1)
   const [ categoryId ] = useCatigory()
   // POST order
   const { data: orderData, loading: orderLoading, error: orderError, post: orderPost } = usePost("/order")
   // GET products
-  const {data, error, loading} = useGet(`/products/${categoryId}`)
+  const {data, error, loading} = useGet(`/products/${categoryId}/${page}`)
   // GET table number
   const { data: tables, error: tableErr, loading: tableLoading } = useGet(`/tables`)
 
   const [ tableId, setTableId ] = useTable()
-  
   let productCount = 1
 
   
@@ -44,13 +43,14 @@ function Products () {
 
   }, [tableId, orderData, orderLoading, orderError, NEWORDER])
 
+
   const tableChange = e => {
     setTableId(e.target.value)
   }
 
   let tableNum
   if(tableId && tables) {
-    tableNum = tables.find(t => t.table_id == tableId)
+    tableNum = tables.find(t => (t.table_id -0) === (tableId - 0))
   }
   return(
     <>
@@ -143,8 +143,20 @@ function Products () {
           }
 
           <div className="products_btns">
-            <button className="carusel-btn left-btn"></button>
-            <button className="carusel-btn right-btn"></button>
+            <button
+              onClick={() => {
+                if(page !== 1) {
+                  setPage(page - 1)
+                }
+              }}
+              className="carusel-btn left-btn"
+            ></button>
+            <button
+              onClick={() => {
+                  setPage(page + 1)
+              }}
+              className="carusel-btn right-btn"
+            ></button>
           </div>
         </div>
 
