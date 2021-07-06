@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import "./Products.css"
 import { useCatigory } from "../../../../../Context/CategoryContext"
@@ -37,7 +37,7 @@ function Products () {
       if (NEWORDER) {
         NEWORDER.textContent = ""
         NEWORDER.classList.remove("newOrder")
-        
+        // window.location.reload()
       }
 
     }, 1500)

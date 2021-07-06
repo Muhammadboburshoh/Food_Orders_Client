@@ -1,13 +1,30 @@
-.backet {
+.all-backet {
+  width: 100%;
   position: fixed;
   right: 0;
   top: 0;
   height: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.no-content {
+  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.274);
+  min-width: 65%;
+  flex-grow: 1;
+}
+
+.backet {
+  min-height: 100%;
+  z-index: 11;
+  /* width: 100%; */
   z-index: 2;
   background-color: #eeeeee;
   padding: 20px;
   box-shadow: -23px 9px 41px -23px rgb(0 0 0 / 75%);
-  width: 350px;
+  min-width: 400px;
 }
 
 .basket__header {
