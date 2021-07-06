@@ -24,9 +24,8 @@
 
 .basket__main {
   display: flex;
-  /* background-color: #123; */
+  flex-direction: column;
   width: 100%;
-  /* min-height: 100px; */
   overflow: hidden;
   overflow-y: auto;
   margin-bottom: 20px;;
@@ -51,4 +50,8 @@
 .d-none {
   position: absolute;
   left: -100%;
+}
+
+.price {
+  margin-top: 10px;
 }

@@ -5,10 +5,12 @@ import useGet from "../../../Hooks/useGet"
 import { useTable } from "../../../Context/TableContext"
 
 function Basket() {
+  let price = 0
 
   const [ tableId ] = useTable()
   
-  var { data, loading } = useGet(`/order/new/${tableId}`)
+  var { data, loading } = useGet(`/order/${tableId}`)
+  console.log(data);
 
   const [ basketDisplay, setBasketDisplay ] = useBasket()
   return (
@@ -29,47 +31,48 @@ function Basket() {
           </div>
 
           <main className="basket__main">
-            {
+             {
               loading && <h1>Loading...</h1>
             }
             {
               !loading && data && (
-                
-                <table>
-                  <thead>
-                  <tr>
-                    <th>Mahsulot</th>
-                    <th>Nechta</th>
-                    <th>Narxi</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                      { 
-                        data.product.map(( p, i ) => (
+                <>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Age</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        data.map(d => (
                           <tr key={Math.random()}>
-                            <td key={Math.random()}>{p}</td>
-                            <td key={Math.random()}>{data.count[i]}</td>
-                            <td key={Math.random()}>{data.price[i]}</td>
+                            <td>{d.product_name}</td>
+                            <td>{d.product_count}</td>
+                            <td>{(d.product_count - 0) * (d.product_price - 0)}</td>
+                            <td className="d-none">{price += (d.product_count - 0) * (d.product_price - 0)}</td>
                           </tr>
                         ))
                       }
+                    </tbody>
+                  </table>
 
-                    
-                    {/* <tr>
-                      <td>Eve</td>
-                      <td>Jackson</td>
-                      <td>94</td>
-                    </tr>
-                    <tr>
-                      <td>John</td>
-                      <td>Doe</td>
-                      <td>80</td>
-                    </tr> */}
-                  </tbody>
-              </table>
+                  {
+                    price && (
+                      <div className="price">
+                        <span>Jami: </span>
+                        <span>{price} so'm</span>
+                      </div>
+                    )
+                  }
+                </>
               )
-            }
-          </main>
+            } 
+
+
+          </main> 
           <button className="basket__btn">Buyurtma berish</button>
         </div>
       </section>
