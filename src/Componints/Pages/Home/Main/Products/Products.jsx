@@ -119,7 +119,7 @@ function Products () {
                     <li key={Math.random()} className="products__item">
                       <img
                         /*src={"http://localhost:4000/" + p.product_image}*/
-                        src="https://picsum.photos/id/156/250/250"
+                        src="https://picsum.photos/id/189/250/250"
                         className="products__img"
                         alt={p.product_name}
                         width="250"

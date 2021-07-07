@@ -16,9 +16,12 @@ function Basket() {
   const [ delData, setDelData ] = useState(null)
   const [ delLoading, setDelLoading ] = useState(false)
 
+  const [ orderData , setOrderData ] = useState(null)
+  const [ orderLoading , setOrderLoading ] = useState(false)
+  const [ orderError , setOrderError ] = useState(null)
+
   const [ getOrder ] = useOrder()
   
-
   let price = 0
 
   const [ tableId ] = useTable()
@@ -89,38 +92,34 @@ function Basket() {
 
   useEffect(() => {
 
-    ;(async () => {
+    ;(async() => {
 
       if(order) {
 
         try {
-          setDelLoading(false)
+          setOrderLoading(true)
   
-          const response = await fetch("http://localhost:3000/order", {
-            method: "PUT",
-            headers : {
+          const response = await fetch("http://localhost:3000/order/new", {
+            method: "POST",
+            headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify(tableId)
+            body: JSON.stringify({tableId})
           })
-  
-          const json = await response.json()
-          if(json) {
-            
-            setDelLoading(false)
-            setDelData(json)
+
+          if(response.status >= 200 && response.status <= 299) {
+            setOrderLoading(false)
+            setOrderData(await response.json())
             setOrder(false)
           }
-  
         } catch(e) {
-          setDelLoading(false)
-          setDelError(e)
+          setOrderLoading(false)
+          setOrderError(e)
         }
-      } 
+      }
 
 
     })()
-
   }, [order, tableId])
 
 
