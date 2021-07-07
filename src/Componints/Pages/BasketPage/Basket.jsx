@@ -17,12 +17,14 @@ function Basket() {
   const [ delLoading, setDelLoading ] = useState(false)
 
   const [ getOrder ] = useOrder()
+  
 
   let price = 0
 
   const [ tableId ] = useTable()
 
   const [ itemId, setItemId ] = useState(0)
+  const [ order, setOrder ] = useState(false)
 
 
 
@@ -48,9 +50,8 @@ function Basket() {
 
     })()
 
-  }, [tableId, itemId, delError, delData, delLoading, getOrder])
+  }, [tableId, itemId, delError, delData, delLoading, getOrder, order])
 
-  // console.log(useOrder);
 
   useEffect(() => {
 
@@ -85,6 +86,42 @@ function Basket() {
     })()
 
   }, [itemId])
+
+  useEffect(() => {
+
+    ;(async () => {
+
+      if(order) {
+
+        try {
+          setDelLoading(false)
+  
+          const response = await fetch("http://localhost:3000/order", {
+            method: "PUT",
+            headers : {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(tableId)
+          })
+  
+          const json = await response.json()
+          if(json) {
+            
+            setDelLoading(false)
+            setDelData(json)
+            setOrder(false)
+          }
+  
+        } catch(e) {
+          setDelLoading(false)
+          setDelError(e)
+        }
+      } 
+
+
+    })()
+
+  }, [order, tableId])
 
 
   const [ basketDisplay, setBasketDisplay ] = useBasket()
@@ -167,7 +204,12 @@ function Basket() {
 
 
             </main> 
-            <button className="basket__btn">Buyurtma berish</button>
+            <button
+              className="basket__btn"
+              onClick={() => {
+                setOrder(true)
+              }}
+            >Buyurtma berish</button>
           </div>
         </section>
       </div>
