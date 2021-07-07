@@ -123,6 +123,29 @@ function Basket() {
   }, [order, tableId])
 
 
+  let NEWORDER = document.getElementById("big_order")
+
+  useEffect(() => {
+
+    if(orderData) {
+      // NEWORDER.textContent = "Buyurtma berildi"
+      NEWORDER.classList.add("big_order")
+      NEWORDER.classList.remove("d-none")
+    }
+
+    setTimeout(() => {
+
+      if (NEWORDER) {
+        // NEWORDER.textContent = ""
+        NEWORDER.classList.remove("big_order")
+        NEWORDER.classList.add("d-none")
+      }
+
+    }, 1500)
+
+
+  }, [ orderData, NEWORDER])
+
   const [ basketDisplay, setBasketDisplay ] = useBasket()
   return (
     <section className={`${basketDisplay} all-backet`}>
@@ -201,6 +224,10 @@ function Basket() {
                 )
               } 
 
+              <h1
+                id="big_order"
+                className="d-none"
+              >Buyurtma berildi!</h1>
 
             </main> 
             <button

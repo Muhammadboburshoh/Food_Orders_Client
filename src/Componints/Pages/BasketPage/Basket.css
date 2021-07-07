@@ -85,3 +85,16 @@
 .delete_btn:hover {
   background-size: 25px 25px;
 }
+
+.big_order {
+  display: block;
+  position: fixed;
+  top: 49%;
+  right: 8%;
+  background-color: #81B214;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
