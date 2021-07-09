@@ -125,12 +125,15 @@ function Basket() {
 
   let NEWORDER = document.getElementById("big_order")
 
+  
+
   useEffect(() => {
 
     if(orderData) {
       // NEWORDER.textContent = "Buyurtma berildi"
       NEWORDER.classList.add("big_order")
       NEWORDER.classList.remove("d-none")
+    } else {
     }
 
     setTimeout(() => {
@@ -144,7 +147,7 @@ function Basket() {
     }, 1500)
 
 
-  }, [ orderData, NEWORDER])
+  }, [ orderData, NEWORDER, orderLoading, orderError])
 
   const [ basketDisplay, setBasketDisplay ] = useBasket()
   return (

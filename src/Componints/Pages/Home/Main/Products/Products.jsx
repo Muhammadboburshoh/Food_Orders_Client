@@ -31,7 +31,7 @@ function Products () {
     window.localStorage.setItem("tableId", tableId)
 
     if(orderData) {
-      NEWORDER.textContent = "New Order"
+      NEWORDER.textContent = "Savatchaga qo'shildi!"
       NEWORDER.classList.add("newOrder")
     }
 
