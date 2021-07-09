@@ -30,7 +30,6 @@ function Basket() {
   const [ order, setOrder ] = useState(false)
 
 
-
   useEffect(() => {
 
     ;(async () => {
@@ -125,8 +124,6 @@ function Basket() {
 
   let NEWORDER = document.getElementById("big_order")
 
-  
-
   useEffect(() => {
 
     if(orderData) {
@@ -148,6 +145,28 @@ function Basket() {
 
 
   }, [ orderData, NEWORDER, orderLoading, orderError])
+
+  const [ orderBtn, setOrderBtn ] = useState(true)
+
+  useEffect(()=> {
+
+    if(data) {
+
+      if(data.length) {
+        console.log(data);
+        setOrderBtn(false)
+        // setData(null)
+      } else {
+        setOrderBtn(true)
+        console.log("b");
+      }
+    } else {
+      setOrderBtn(true)
+      console.log("b");
+    }
+    
+
+  }, [data])
 
   const [ basketDisplay, setBasketDisplay ] = useBasket()
   return (
@@ -234,6 +253,7 @@ function Basket() {
 
             </main> 
             <button
+              disabled={orderBtn}
               className="basket__btn"
               onClick={() => {
                 setOrder(true)

@@ -54,7 +54,8 @@ const usePost = (path) => {
       loading,
       error,
       data,
-      post: setBody
+      post: setBody,
+      setData
     }
 }
 

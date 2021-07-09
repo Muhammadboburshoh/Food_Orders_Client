@@ -15,7 +15,7 @@ function Products () {
   const [ categoryId ] = useCatigory()
 
   // POST order
-  const { data: orderData, loading: orderLoading, error: orderError, post: orderPost } = usePost("/order")
+  const { data: orderData, loading: orderLoading, error: orderError, post: orderPost, setData: setOrderData } = usePost("/order")
   // GET products
   const {data, error, loading} = useGet(`/products/${categoryId}/${page}`)
   // GET table number
@@ -24,13 +24,16 @@ function Products () {
   const [ tableId, setTableId ] = useTable()
   let productCount = 1
 
-  
   let NEWORDER = document.getElementById("newElemen");
+
+  // let newData = orderData
   useEffect(() => {
 
     window.localStorage.setItem("tableId", tableId)
 
+
     if(orderData) {
+      setOrderData(null)
       NEWORDER.textContent = "Savatchaga qo'shildi!"
       NEWORDER.classList.add("newOrder")
     }
@@ -45,7 +48,7 @@ function Products () {
     }, 1500)
 
 
-  }, [tableId, orderData, orderLoading, orderError, NEWORDER])
+  }, [tableId, orderData, orderLoading, orderError, NEWORDER, setOrderData])
 
 
   const tableChange = e => {

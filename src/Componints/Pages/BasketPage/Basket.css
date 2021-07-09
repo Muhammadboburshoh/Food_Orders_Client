@@ -64,6 +64,11 @@
   margin-top: auto;
 }
 
+.basket__btn:disabled {
+  background-color: rgba(255, 0, 0, 0.322);
+  cursor: not-allowed;
+}
+
 .d-none {
   position: absolute;
   left: -100%;
