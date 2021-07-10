@@ -153,18 +153,13 @@ function Basket() {
     if(data) {
 
       if(data.length) {
-        console.log(data);
         setOrderBtn(false)
-        // setData(null)
       } else {
         setOrderBtn(true)
-        console.log("b");
       }
     } else {
       setOrderBtn(true)
-      console.log("b");
     }
-    
 
   }, [data])
 
