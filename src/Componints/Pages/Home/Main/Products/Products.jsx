@@ -64,10 +64,8 @@ function Products () {
 
       if(getOrder === 1) {
         setGetOrder(2)
-        // setOrderData(null)
       } else {
         setGetOrder(1)
-        // setOrderData(null)
       }
     }
 
