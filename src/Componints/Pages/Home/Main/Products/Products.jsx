@@ -26,7 +26,6 @@ function Products () {
 
   let NEWORDER = document.getElementById("newElemen");
 
-  // let newData = orderData
   useEffect(() => {
 
     window.localStorage.setItem("tableId", tableId)
@@ -61,14 +60,18 @@ function Products () {
   }
 
   useEffect(() => {
+    if(orderData) {
 
-    if(getOrder === 1) {
-      setGetOrder(2)
-    } else {
-      setGetOrder(1)
+      if(getOrder === 1) {
+        setGetOrder(2)
+        // setOrderData(null)
+      } else {
+        setGetOrder(1)
+        // setOrderData(null)
+      }
     }
 
-  }, [orderData])
+  }, [orderData, getOrder, setGetOrder, setOrderData ])
 
   return(
     <>
