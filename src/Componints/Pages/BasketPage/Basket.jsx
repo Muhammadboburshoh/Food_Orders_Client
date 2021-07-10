@@ -32,25 +32,28 @@ function Basket() {
 
   useEffect(() => {
 
-    ;(async () => {
+    if(tableId !== "null" && tableId !== null) {
 
-      try {
-        setLoading(false)
-
-        const response = await fetch(`http://localhost:3000/order/${tableId}`)
-
-        const json = await response.json()
-        if(json) {
+      ;(async () => {
+  
+        try {
           setLoading(false)
-          setData(json)
+  
+          const response = await fetch(`http://localhost:3000/order/${tableId}`)
+  
+          const json = await response.json()
+          if(json) {
+            setLoading(false)
+            setData(json)
+          }
+  
+        } catch(e) {
+          setLoading(false)
+          setError(e)
         }
-
-      } catch(e) {
-        setLoading(false)
-        setError(e)
-      }
-
-    })()
+  
+      })()
+    }
 
   }, [tableId, itemId, delError, delData, delLoading, getOrder, order])
 

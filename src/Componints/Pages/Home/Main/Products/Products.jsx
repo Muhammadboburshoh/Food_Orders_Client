@@ -14,6 +14,8 @@ function Products () {
   const [ page, setPage ] = useState(1)
   const [ categoryId ] = useCatigory()
 
+  const [productBtn, setProductBtn] = useState(false)
+
   // POST order
   const { data: orderData, loading: orderLoading, error: orderError, post: orderPost, setData: setOrderData } = usePost("/order")
   // GET products
@@ -46,6 +48,11 @@ function Products () {
 
     }, 1500)
 
+    if(tableId !== "null" && tableId !== null) {
+      setProductBtn(false)
+    } else {
+      setProductBtn(true)
+    }
 
   }, [tableId, orderData, orderLoading, orderError, NEWORDER, setOrderData])
 
@@ -145,6 +152,7 @@ function Products () {
                         />
                       </div>
                       <button
+                        disabled={productBtn}
                         onClick={ () => {
                           orderPost({
                             productId: p.product_id,

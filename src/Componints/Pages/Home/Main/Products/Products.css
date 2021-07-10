@@ -72,6 +72,11 @@
   cursor: pointer;
 }
 
+.products__order-btn:disabled {
+  background: rgba(252, 153, 160);
+  cursor: not-allowed;
+}
+
 .table__wrapper {
   display: flex;
 }
