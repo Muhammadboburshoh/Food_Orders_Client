@@ -89,7 +89,6 @@ function Products () {
                 <select
                   value={tableId}
                   onChange={tableChange}
-                  defaultValue={tableId}
                   className="products__orders-table"
                 >
                   <option value="">O'tirgan stol raqamini tanlang:</option>
