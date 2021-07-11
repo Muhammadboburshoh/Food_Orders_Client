@@ -61,11 +61,6 @@ function Products () {
     setTableId(e.target.value)
   }
 
-  let tableNum
-  if(tableId && tables) {
-    tableNum = tables.find(t => (t.table_id -0) === (tableId - 0))
-  }
-
   useEffect(() => {
     if(orderData) {
 
@@ -92,6 +87,7 @@ function Products () {
             {
               !tableErr && !tableLoading && tables && (
                 <select
+                  value={tableId}
                   onChange={tableChange}
                   defaultValue={tableId}
                   className="products__orders-table"
@@ -111,9 +107,6 @@ function Products () {
               )
             }
 
-            {
-              tableNum && <span className="table_number">Siz {tableNum.table_number}-stolni tanladingiz!</span>
-            }
         </div>
         
           {
