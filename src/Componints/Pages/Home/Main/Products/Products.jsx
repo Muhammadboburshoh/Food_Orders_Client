@@ -48,7 +48,7 @@ function Products () {
 
     }, 1500)
 
-    if(tableId !== "null" && tableId !== null && tableId !== 0) {
+    if(tableId !== "null" && tableId !== null && tableId !== "0") {
       setProductBtn(false)
     } else {
       setProductBtn(true)
@@ -146,7 +146,7 @@ function Products () {
                       <button
                         disabled={productBtn}
                         onClick={ () => {
-                          if(tableId !== 0) {
+                          if(productCount > 0) {
 
                             orderPost({
                               productId: p.product_id,
