@@ -23,6 +23,8 @@
 }
 
 .products__img {
+  width: 250px;
+  height: 250px;
   display: block;
   margin-right: auto;
   margin-left: auto;

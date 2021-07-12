@@ -23,7 +23,7 @@ function Products () {
   // GET table number
   const { data: tables, error: tableErr, loading: tableLoading } = useGet(`/tables`)
 
-  const [ tableId, setTableId ] = useTable()
+  const [ tableId, setTableId ] = useTable(0)
   let productCount = 1
 
   let NEWORDER = document.getElementById("newElemen");
@@ -48,7 +48,7 @@ function Products () {
 
     }, 1500)
 
-    if(tableId !== "null" && tableId !== null) {
+    if(tableId !== "null" && tableId !== null && tableId !== 0) {
       setProductBtn(false)
     } else {
       setProductBtn(true)
@@ -91,7 +91,7 @@ function Products () {
                   onChange={tableChange}
                   className="products__orders-table"
                 >
-                  <option value="">O'tirgan stol raqamini tanlang:</option>
+                  <option value="0">O'tirgan stol raqamini tanlang:</option>
                   {
                     tables.map(t => (
                       <option
@@ -121,8 +121,8 @@ function Products () {
                   data.map(p => (
                     <li key={Math.random()} className="products__item">
                       <img
-                        /*src={"http://localhost:4000/" + p.product_image}*/
-                        src="https://picsum.photos/id/189/250/250"
+                        src={"http://localhost:3000/" + p.product_image}
+                        // src="https://picsum.photos/id/189/250/250"
                         className="products__img"
                         alt={p.product_name}
                         width="250"
@@ -146,11 +146,14 @@ function Products () {
                       <button
                         disabled={productBtn}
                         onClick={ () => {
-                          orderPost({
-                            productId: p.product_id,
-                            productCount: productCount,
-                            tableId: tableId
-                          })
+                          if(tableId !== 0) {
+
+                            orderPost({
+                              productId: p.product_id,
+                              productCount: productCount,
+                              tableId: tableId
+                            })
+                          }
                         }}
                         className="products__order-btn"
                       >Savatchaga qo'shish</button>
