@@ -73,6 +73,13 @@ function Products () {
 
   }, [orderData, getOrder, setGetOrder, setOrderData ])
 
+
+  useEffect(() => {
+
+    setPage(1)
+
+  }, [categoryId])
+
   return(
     <>
       <section className="products">
