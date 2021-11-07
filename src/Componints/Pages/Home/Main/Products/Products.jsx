@@ -32,7 +32,6 @@ function Products () {
 
     window.localStorage.setItem("tableId", tableId)
 
-
     if(orderData) {
       setOrderData(null)
       NEWORDER.textContent = "Savatchaga qo'shildi!"
@@ -129,7 +128,6 @@ function Products () {
                     <li key={Math.random()} className="products__item">
                       <img
                         src={"http://localhost:3000/" + p.product_image}
-                        // src="https://picsum.photos/id/189/250/250"
                         className="products__img"
                         alt={p.product_name}
                         width="250"
@@ -144,7 +142,7 @@ function Products () {
                             productCount = e.target.value.trim();
                           }}
                           defaultValue={1}
-                          name={'name' + Math.random()}
+                          name={p.product_name}
                           id={'name' + Math.random()}
                           className="products__count"
                           type="number"
